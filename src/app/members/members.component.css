@@ -1,0 +1,37 @@
+h5 {
+    font-weight: bold;
+    color: #fff;
+}
+
+.btn  {
+    padding: 2px 5px;
+    background: #053644 !important; 
+}
+
+.media, .profile {
+    margin: 20px 0;
+    background:#32A2C7;
+    border: 2px solid #053644;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.profile {
+    padding: 50px;
+    font-size: 1.5em;
+}
+
+.profile .btn, .profile h5 {
+    font-size: 1em;
+}
+
+.media-body {
+    padding: 10px;
+}
+
+.head {
+    text-align: center;
+    border-bottom: 1px solid lightgrey;
+    margin-top: 50px;
+    width: 100%;
+}

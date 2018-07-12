@@ -1,0 +1,69 @@
+<div class="container-fluid">
+
+  <div class="row">
+
+    <!--Profile-->
+    <div *ngIf="appState == 'extend'" class="container">
+      <div class="row">
+        <h1 class="head">User Profile</h1>
+        <div class="col-sm-12 profile">
+          <div *ngFor="let user of users">
+            <div *ngIf="user.$key == activeKey" class="row">
+              <div class="col-sm-3">
+                <img class="img-fluid imgProfile" src=".{{user.img}}" alt="{{user.name}}-Image">
+              </div>
+              <div class="col-sm-9">
+                <h5 class="mt-0"> {{user.name}} {{user.surname}} </h5>
+                <strong>Age: </strong> {{user.age}}
+                <br>
+                <strong>Hobbies: </strong> {{user.hobbies}}
+                <br>{{user.name}} is currently
+                <span *ngIf="user.rel; else single">taken.</span>
+                <ng-template #single>
+                  <span>on the market.</span>
+                </ng-template>
+                <hr>
+                <button (click)="addLike(user.$key, user.likes)" type="button" class="like btn btn-primary">Like</button> {{user.likes}}
+                <button class="btn btn-warning float-right" (click)="changeState('default')">close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <h1 class="head">Other Members</h1>
+      </div>
+    </div>
+    <!--Filter-->
+    <div class="col-12">
+      <div class="col-lg-12">
+        <br>
+        <h6>Filter Gender</h6>
+        <select class="form-control" (change)="filterGender(filteredGender.value)" #filteredGender>
+          <option value="all">all</option>
+          <option *ngFor="let gender of genders" value="{{gender.sex}}">
+            {{gender.sex}}
+          </option>
+        </select>
+
+      </div>
+    </div>
+    <!--Members-->
+    <div class="col-sm-12 col-md-6 col-lg-3" *ngFor="let user of users">
+      <div class="media row no-gutters">
+        <img class="mr-3 col-lg-12 col-md-6 img-resonsive center-block" src=".{{user.img}}" alt="{{user.name}}-image">
+        <div class="media-body col-lg-12 col-md-6">
+          <h5 class="mt-0"> {{user.name}} {{user.surname}} </h5>
+          <strong>Age: </strong> {{user.age}}
+          <br>is
+          <span *ngIf="user.rel; else single">taken.</span>
+          <ng-template #single>
+            <span>on the market.</span>
+          </ng-template>
+          <hr>
+          <button (click)="addLike(user.$key, user.likes)" type="button" class="like btn btn-primary">Like</button> {{user.likes}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
